@@ -6,18 +6,25 @@ class CompaniesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int itemCount = 20;
-    return ListView.builder(
-      itemCount: itemCount,
-      itemBuilder: (BuildContext context, int index) {
-        return ListTile(
-          title: Text('Item ${(index + 1)}'),
-          leading: const Icon(Icons.store),
-          trailing: const Icon(Icons.link),
-          onTap: () {
-            debugPrint('Item ${(index + 1)} pressed');
-          },
-        );
-      },
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Companies Name',
+        ),
+      ),
+      body: ListView.builder(
+        itemCount: itemCount,
+        itemBuilder: (BuildContext context, int index) {
+          return ListTile(
+            title: Text('Item ${(index + 1)}'),
+            leading: const Icon(Icons.store),
+            trailing: const Icon(Icons.link),
+            onTap: () {
+              debugPrint('Item ${(index + 1)} pressed');
+            },
+          );
+        },
+      ),
     );
   }
 }

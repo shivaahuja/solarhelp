@@ -13,24 +13,24 @@ class _LearnFlutterState extends State<LearnFlutter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text('Learn Flutter'),
-      //   automaticallyImplyLeading: false,
-      //   leading: IconButton(
-      //     onPressed: () {
-      //       Navigator.of(context).pop();
-      //     },
-      //     icon: const Icon(Icons.arrow_back),
-      //   ),
-      //   actions: [
-      //     IconButton(
-      //       onPressed: () {
-      //         debugPrint('Info button clicked');
-      //       },
-      //       icon: const Icon(Icons.info_outline),
-      //     ),
-      //   ],
-      // ),
+      appBar: AppBar(
+        title: const Text('Learn Flutter'),
+        automaticallyImplyLeading: false,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: const Icon(Icons.arrow_back),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              debugPrint('Info button clicked');
+            },
+            icon: const Icon(Icons.info_outline),
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [

@@ -10,8 +10,13 @@ class DonationPage extends StatefulWidget {
 class _DonationPageState extends State<DonationPage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Sign in',
+        ),
+      ),
+      body: const Center(
         child: Text('Donation Page'),
       ),
     );
