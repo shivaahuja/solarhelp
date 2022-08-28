@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:solarhelp/src/screens/add_company.dart';
 
 class LearnFlutter extends StatefulWidget {
   const LearnFlutter({Key? key}) : super(key: key);
@@ -65,7 +66,8 @@ class _LearnFlutterState extends State<LearnFlutter> {
             ),
             OutlinedButton(
               onPressed: () {
-                debugPrint('pressed');
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const AddCompany()));
               },
               child: const Text('Button'),
             ),
