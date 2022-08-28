@@ -16,7 +16,7 @@ class CompaniesPage extends StatefulWidget {
 class _CompaniesPageState extends State<CompaniesPage> {
   final _database = FirebaseDatabase.instance.ref();
   final _user = FirebaseAuth.instance.currentUser!.uid;
-  final String _admin = 'BIhnEYlGzmRAymdnkM2BLR1hVZl2';
+  final String _admin = 'mdZm8SQVDBR5TUsRdnPj11w5bfm1';
   @override
   void initState() {
     super.initState();
@@ -31,7 +31,7 @@ class _CompaniesPageState extends State<CompaniesPage> {
         ),
         actions: [
           Visibility(
-            visible: _user == _admin ? true : false,
+            // visible: _user == _admin ? true : false,
             child: ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(

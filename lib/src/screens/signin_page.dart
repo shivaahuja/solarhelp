@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:solarhelp/src/screens/donation_page.dart';
 import 'package:solarhelp/src/screens/navigation.dart';
+import 'package:solarhelp/src/screens/verifyscreen.dart';
 import '../auth.dart';
 
 class Signin extends StatefulWidget {
@@ -177,15 +178,21 @@ class _SigninState extends State<Signin> {
       UserCredential userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: _email, password: _password);
       if (userCredential.user!.emailVerified) {
-        Navigator.of(context).push(MaterialPageRoute(
+        Navigator.of(context).push(
+          MaterialPageRoute(
             builder: (context) => Navigation(
-                  currentIndex: 0,
-                )));
+              currentIndex: 0,
+            ),
+          ),
+        );
       } else {
-        Navigator.of(context).push(MaterialPageRoute(
+        Navigator.of(context).push(
+          MaterialPageRoute(
             builder: (context) => Navigation(
-                  currentIndex: 0,
-                )));
+              currentIndex: 0,
+            ),
+          ),
+        );
       }
     } on FirebaseAuthException catch (e) {
       Fluttertoast.showToast(
