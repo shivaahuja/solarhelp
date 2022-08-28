@@ -1,8 +1,10 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:solarhelp/src/models/company.dart';
+import 'package:solarhelp/src/screens/add_company.dart';
 
 class CompaniesPage extends StatefulWidget {
   const CompaniesPage({Key? key}) : super(key: key);
@@ -13,11 +15,8 @@ class CompaniesPage extends StatefulWidget {
 
 class _CompaniesPageState extends State<CompaniesPage> {
   final _database = FirebaseDatabase.instance.ref();
-
-  final ref = FirebaseDatabase.instance.ref();
-
-  Query dbRef = FirebaseDatabase.instance.ref().child('Companies');
-
+  final _user = FirebaseAuth.instance.currentUser!.uid;
+  final String _admin = 'BIhnEYlGzmRAymdnkM2BLR1hVZl2';
   @override
   void initState() {
     super.initState();
@@ -30,6 +29,17 @@ class _CompaniesPageState extends State<CompaniesPage> {
         title: const Text(
           'Companies Name',
         ),
+        actions: [
+          Visibility(
+            visible: _user == _admin ? true : false,
+            child: ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const AddCompany()));
+                },
+                child: const Icon(Icons.add_business_outlined)),
+          )
+        ],
       ),
       body: Column(
         children: [
