@@ -31,7 +31,7 @@ class _CompaniesPageState extends State<CompaniesPage> {
         ),
         actions: [
           Visibility(
-            // visible: _user == _admin ? true : false,
+            visible: _user == _admin ? true : false,
             child: ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(

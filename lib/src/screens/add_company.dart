@@ -42,8 +42,8 @@ class _AddCompanyState extends State<AddCompany> {
                       'Link': _linkController.text
                     });
                     Fluttertoast.showToast(msg: 'Company has been added');
-                    _nameController.text = '';
-                    _linkController.text = '';
+                    _nameController.clear();
+                    _linkController.clear();
                   },
                   child: const Text('Add company'))
             ],

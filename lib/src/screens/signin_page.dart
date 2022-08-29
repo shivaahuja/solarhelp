@@ -5,7 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:solarhelp/src/screens/donation_page.dart';
 import 'package:solarhelp/src/screens/navigation.dart';
-import 'package:solarhelp/src/screens/verifyscreen.dart';
 import '../auth.dart';
 
 class Signin extends StatefulWidget {
@@ -94,9 +93,8 @@ class _SigninState extends State<Signin> {
                         });
                       },
                       validator: (value) {
-                        if (value == null) {
-                          return 'Required';
-                        }
+                        if (value == null) {}
+                        return 'Required';
                       },
                     ),
                   ),
