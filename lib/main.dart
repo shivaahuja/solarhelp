@@ -12,7 +12,7 @@ void main() async {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.grey,
         backgroundColor: Colors.blue[300],
       ),
       home: Navigation(currentIndex: 1),
