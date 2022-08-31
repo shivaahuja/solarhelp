@@ -2,16 +2,22 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:solarhelp/src/screens/navigation.dart';
 import 'package:solarhelp/src/screens/signin_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final FirebaseApp app = await Firebase.initializeApp();
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    theme: ThemeData(primarySwatch: Colors.red),
-    home: const Signin(),
-  ));
+  runApp(
+    MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+        backgroundColor: Colors.blue[300],
+      ),
+      home: Navigation(currentIndex: 1),
+    ),
+  );
 }
 
 // class MyApp extends StatelessWidget {

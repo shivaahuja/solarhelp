@@ -74,7 +74,7 @@ class _NavigationState extends State<Navigation> {
         ),
       ],
       onTap: _onTapped,
-      selectedItemColor: Colors.red,
+      selectedItemColor: Colors.black,
       unselectedItemColor: Colors.grey[600],
       backgroundColor: Colors.white,
     );

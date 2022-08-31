@@ -36,16 +36,17 @@ class _AddCompanyState extends State<AddCompany> {
                 ),
               ),
               ElevatedButton(
-                  onPressed: () async {
-                    await company.push().update({
-                      'Name': _nameController.text,
-                      'Link': _linkController.text
-                    });
-                    Fluttertoast.showToast(msg: 'Company has been added');
-                    _nameController.clear();
-                    _linkController.clear();
-                  },
-                  child: const Text('Add company'))
+                onPressed: () async {
+                  await company.push().update({
+                    'Name': _nameController.text,
+                    'Link': _linkController.text
+                  });
+                  Fluttertoast.showToast(msg: 'Company has been added');
+                  _nameController.clear();
+                  _linkController.clear();
+                },
+                child: const Text('Add company'),
+              )
             ],
           ),
         ),
