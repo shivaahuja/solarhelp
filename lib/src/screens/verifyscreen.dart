@@ -3,6 +3,7 @@
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:solarhelp/src/screens/navigation.dart';
 
 class VerifyScreen extends StatefulWidget {
@@ -14,25 +15,19 @@ class VerifyScreen extends StatefulWidget {
 
 class _VerifyScreenState extends State<VerifyScreen> {
   final auth = FirebaseAuth.instance;
-  late User user;
   late Timer timer;
-
+  User? user = FirebaseAuth.instance.currentUser;
+  bool isEmailVerified = false;
   @override
   void initState() {
-    user = auth.currentUser!;
-    user.sendEmailVerification();
+    super.initState();
+    isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
+    // print(user);
+    // user.sendEmailVerification();
 
-    timer = Timer.periodic(const Duration(seconds: 5), (timer) {
+    timer = Timer.periodic(const Duration(seconds: 10), (timer) {
       checkEmailVerified();
     });
-
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    timer.cancel();
-    super.dispose();
   }
 
   @override
@@ -51,7 +46,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              'An email has been sent to your ${user.email}',
+              'An email has been sent to your ${user!.email}',
               textAlign: TextAlign.center,
               style: const TextStyle(
                 height: 1.2,
@@ -66,11 +61,9 @@ class _VerifyScreenState extends State<VerifyScreen> {
             ),
           ),
           ElevatedButton(
-            onPressed: () {
-              user.sendEmailVerification();
-            },
+            onPressed: sendVerificationEmail,
             style: ElevatedButton.styleFrom(
-              minimumSize: const Size(88, 55),
+              // minimumSize: Size(88, 55),
               shape: new RoundedRectangleBorder(
                   borderRadius: new BorderRadius.circular(30.0)),
             ),
@@ -83,12 +76,30 @@ class _VerifyScreenState extends State<VerifyScreen> {
 
   Future<void> checkEmailVerified() async {
     user = auth.currentUser!;
-    await user.reload();
+    await user!.reload();
 
-    if (user.emailVerified) {
+    if (user!.emailVerified) {
       timer.cancel();
       Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => Navigation(currentIndex: 0)));
+        MaterialPageRoute(
+          builder: (context) => Navigation(currentIndex: 0),
+        ),
+      );
     }
+  }
+
+  Future sendVerificationEmail() async {
+    try {
+      final user = FirebaseAuth.instance.currentUser;
+      await user!.sendEmailVerification();
+    } catch (e) {
+      Fluttertoast.showToast(msg: e.toString(), gravity: ToastGravity.CENTER);
+    }
+  }
+
+  @override
+  void dispose() {
+    timer.cancel();
+    super.dispose();
   }
 }

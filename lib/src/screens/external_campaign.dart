@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_unnecessary_containers
+// ignore_for_file: avoid_unnecessary_containers, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
 import 'package:url_launcher/link.dart';
@@ -73,7 +73,10 @@ class ExternalCampaign extends StatelessWidget {
                   primary: Colors.grey[700],
                 ),
                 onPressed: followLink,
-                child: const Icon(Icons.open_in_new),
+                child: const Icon(
+                  Icons.open_in_new,
+                  color: Colors.white70,
+                ),
               ),
             )
           ],

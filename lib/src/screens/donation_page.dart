@@ -37,9 +37,7 @@ class _DonationPageState extends State<DonationPage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(
-            height: 75,
-          ),
+          const SizedBox(height: 75),
           Padding(
             padding: const EdgeInsets.only(left: 25.0),
             child: Container(
@@ -53,7 +51,7 @@ class _DonationPageState extends State<DonationPage> {
               child: const Icon(Icons.arrow_back, size: 30.0),
             ),
           ),
-          const SizedBox(height: 50),
+          const SizedBox(height: 4e0),
           const Padding(
             padding: EdgeInsets.only(left: 25.0),
             child: Text(
