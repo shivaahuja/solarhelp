@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:solarhelp/src/screens/companies_page.dart';
 import 'package:solarhelp/src/screens/donation_page.dart';
 import 'package:solarhelp/src/screens/home_page.dart';
+import 'package:solarhelp/src/screens/learn_flutter.dart';
 
 class Navigation extends StatefulWidget {
   Navigation({Key? key, required this.currentIndex}) : super(key: key);

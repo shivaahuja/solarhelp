@@ -74,7 +74,7 @@ class _DonationPageState extends State<DonationPage> {
               child: Link(
                 uri: Uri.parse('https://paypal.me/donationfortrees'),
                 builder: (context, followLink) => ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: Colors.green[300]),
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.green[300]),
                   onPressed: followLink,
                   child: Image.asset('lib/src/images/Plantingtrees.png'),
                 ),

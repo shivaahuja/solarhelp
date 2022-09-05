@@ -4,7 +4,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:solarhelp/src/screens/navigation.dart';
 import 'package:solarhelp/src/screens/signin_page.dart';
-import 'package:solarhelp/src/screens/signup_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,7 +15,7 @@ void main() async {
         primarySwatch: Colors.grey,
         backgroundColor: Colors.blue[200],
       ),
-      home: Navigation(currentIndex: 1),
+      home: const Signin(),
     ),
   );
 }

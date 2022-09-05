@@ -70,7 +70,7 @@ class ExternalCampaign extends StatelessWidget {
               uri: Uri.parse(websiteLink),
               builder: (BuildContext context, followLink) => ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.grey[700],
+                  backgroundColor: Colors.grey[700],
                 ),
                 onPressed: followLink,
                 child: const Icon(

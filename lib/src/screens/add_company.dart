@@ -22,6 +22,7 @@ class _AddCompanyState extends State<AddCompany> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _linkController = TextEditingController();
   final TextEditingController _ratingController = TextEditingController();
+  // ignore: prefer_typing_uninitialized_variables
   var link;
   @override
   Widget build(BuildContext context) {
@@ -64,8 +65,12 @@ class _AddCompanyState extends State<AddCompany> {
                   final path = logo!.files.single.path;
                   File file = File(path!);
                   try {
-                    await storage.ref('images/').putFile(file);
-                    link = await storage.ref('images/').getDownloadURL();
+                    await storage
+                        .ref('/images/${_nameController.text}')
+                        .putFile(file);
+                    link = await storage
+                        .ref('/images/${_nameController.text}')
+                        .getDownloadURL();
                   } on firebase_core.FirebaseException catch (e) {
                     Fluttertoast.showToast(msg: e.message ?? 'unkown error');
                   }

@@ -1,5 +1,3 @@
-// ignore_for_file: must_be_immutable
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -178,6 +176,8 @@ class _CompaniesPageState extends State<CompaniesPage> {
                   );
                   tilesList.add(companyTile);
                 });
+              } else {
+                return const CircularProgressIndicator();
               }
               return Expanded(
                 child: ListView(
