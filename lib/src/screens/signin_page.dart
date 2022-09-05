@@ -30,7 +30,7 @@ class _SigninState extends State<Signin> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Sign in',
+          'Sign In',
           // style: TextStyle(
           //   color: Colors.black,
           //   fontWeight: FontWeight.bold,
