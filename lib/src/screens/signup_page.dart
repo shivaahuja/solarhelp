@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously, unnecessary_new, prefer_typing_uninitialized_variables
+// ignore_for_file: use_build_context_synchronously, unnecessary_new, prefer_typing_uninitialized_variables, unused_field
 
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:solarhelp/src/screens/home_page.dart';
 import 'package:solarhelp/src/screens/signin_page.dart';
-import 'package:solarhelp/src/screens/verifyscreen.dart';
 
 class Signup extends StatefulWidget {
   const Signup({Key? key}) : super(key: key);
