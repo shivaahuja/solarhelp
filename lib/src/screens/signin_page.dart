@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:solarhelp/src/screens/donation_page.dart';
+import 'package:solarhelp/src/screens/home_page.dart';
 import 'package:solarhelp/src/screens/navigation.dart';
 import 'package:solarhelp/src/screens/signup_page.dart';
 import '../auth.dart';
@@ -154,7 +154,7 @@ class _SigninState extends State<Signin> {
         password: _passwordController.text,
       );
       Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => const DonationPage()));
+          .push(MaterialPageRoute(builder: (context) => const HomePage()));
     } on FirebaseAuthException catch (e) {
       setState(() {
         errorMessage = e.message;
