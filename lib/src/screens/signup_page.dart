@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously, unnecessary_new, prefer_typing_uninitialized_variables
+// ignore_for_file: use_build_context_synchronously, unnecessary_new, prefer_typing_uninitialized_variables, unused_field
 
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
