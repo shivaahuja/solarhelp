@@ -205,7 +205,7 @@ class _SignupState extends State<Signup> {
         }
 
         await userCredential.user!.updateDisplayName(_name);
-        await userCredential.user!.sendEmailVerification();
+        // await userCredential.user!.sendEmailVerification();
 
         Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => const HomePage()));
