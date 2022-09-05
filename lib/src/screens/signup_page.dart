@@ -4,6 +4,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:solarhelp/src/screens/home_page.dart';
 import 'package:solarhelp/src/screens/signin_page.dart';
 import 'package:solarhelp/src/screens/verifyscreen.dart';
 
@@ -207,7 +208,7 @@ class _SignupState extends State<Signup> {
         await userCredential.user!.sendEmailVerification();
 
         Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => const VerifyScreen()));
+            MaterialPageRoute(builder: (context) => const HomePage()));
       }
     } on FirebaseAuthException catch (e) {
       Fluttertoast.showToast(
