@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:solarhelp/src/screens/external_campaign.dart';
+import 'package:solarhelp/src/screens/navigation.dart';
 import 'package:url_launcher/link.dart';
 
 class DonationPage extends StatefulWidget {
@@ -42,16 +43,26 @@ class _DonationPageState extends State<DonationPage> {
             padding: const EdgeInsets.only(left: 25.0),
             child: Container(
               height: 50,
-              padding: const EdgeInsets.all(8),
+              width: 50,
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.white),
                 borderRadius: BorderRadius.circular(12),
                 color: Colors.grey[200],
               ),
-              child: const Icon(Icons.arrow_back, size: 30.0),
+              child: TextButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => Navigation(currentIndex: 1)));
+                },
+                child: const Icon(
+                  Icons.arrow_back,
+                  size: 30.0,
+                  color: Colors.black,
+                ),
+              ),
             ),
           ),
-          const SizedBox(height: 4e0),
+          const SizedBox(height: 10),
           const Padding(
             padding: EdgeInsets.only(left: 25.0),
             child: Text(
@@ -59,7 +70,7 @@ class _DonationPageState extends State<DonationPage> {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
             ),
           ),
-          const SizedBox(height: 40),
+          const SizedBox(height: 30),
           const Padding(
             padding: EdgeInsets.only(left: 25.0),
             child: Text(
@@ -74,7 +85,8 @@ class _DonationPageState extends State<DonationPage> {
               child: Link(
                 uri: Uri.parse('https://paypal.me/donationfortrees'),
                 builder: (context, followLink) => ElevatedButton(
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.green[300]),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green[300]),
                   onPressed: followLink,
                   child: Image.asset('lib/src/images/Plantingtrees.png'),
                 ),
@@ -93,6 +105,7 @@ class _DonationPageState extends State<DonationPage> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: ListView.builder(
+                padding: const EdgeInsets.only(top: 5.0),
                 itemCount: externalCampaign.length,
                 itemBuilder: (context, index) {
                   return ExternalCampaign(

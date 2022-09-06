@@ -28,34 +28,34 @@ class _SigninState extends State<Signin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Sign in',
-          // style: TextStyle(
-          //   color: Colors.black,
-          //   fontWeight: FontWeight.bold,
-          // ),
-        ),
-        // backgroundColor: Colors.white70,
-      ),
       body: SingleChildScrollView(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(height: 100),
             const Padding(
-              padding: EdgeInsets.all(30.0),
+              padding: EdgeInsets.only(left: 25.0),
+              child: Text(
+                'Sign In',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.all(20.0),
               child: Center(
                 child: Image(
-                  image: AssetImage('lib/src/images/logo.jpg'),
+                  image: AssetImage('lib/src/images/logo.png'),
                 ),
               ),
             ),
-            const SizedBox(height: 10.0),
+            const SizedBox(height: 5.0),
             Form(
               key: formKey,
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(12.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: TextFormField(
                       controller: _emailController,
                       autofillHints: const [AutofillHints.email],
@@ -99,7 +99,7 @@ class _SigninState extends State<Signin> {
                       },
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 30),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [

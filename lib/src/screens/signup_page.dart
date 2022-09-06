@@ -34,7 +34,7 @@ class _SignupState extends State<Signup> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 50.0),
+          const SizedBox(height: 100.0),
           const Padding(
             padding: EdgeInsets.only(left: 25.0),
             child: Text(
@@ -42,12 +42,13 @@ class _SignupState extends State<Signup> {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
             ),
           ),
-          const SizedBox(height: 20.0),
+          // const SizedBox(height: 10.0),
           const Padding(
             padding: EdgeInsets.all(5.0),
             child: Center(
                 child: Image(
-              image: AssetImage('lib/src/images/logo.jpg'),
+              image: AssetImage('lib/src/images/logo.png'),
+              height: 250,
             )),
           ),
           const SizedBox(height: 10.0),
