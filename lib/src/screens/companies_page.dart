@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:solarhelp/src/models/company.dart';
 import 'package:solarhelp/src/screens/add_company.dart';
+import 'package:solarhelp/src/screens/navigation.dart';
 import 'package:url_launcher/link.dart';
 
 class CompaniesPage extends StatefulWidget {
@@ -18,7 +19,7 @@ class CompaniesPage extends StatefulWidget {
 class _CompaniesPageState extends State<CompaniesPage> {
   final _database = FirebaseDatabase.instance.ref();
   final _user = FirebaseAuth.instance.currentUser!.uid;
-  final String _admin = 'mdZm8SQVDBR5TUsRdnPj11w5bfm1';
+  final String _admin = 'tcc23GGm0nXmDJtJ3Y36iMZVqLf2';
   @override
   void initState() {
     super.initState();
@@ -27,22 +28,6 @@ class _CompaniesPageState extends State<CompaniesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text(
-      //     'Companies Name',
-      //   ),
-      //   actions: [
-      //     Visibility(
-      //       visible: _user == _admin ? true : false,
-      //       child: ElevatedButton(
-      //           onPressed: () {
-      //             Navigator.of(context).push(MaterialPageRoute(
-      //                 builder: (context) => const AddCompany()));
-      //           },
-      //           child: const Icon(Icons.add_business_outlined)),
-      //     )
-      //   ],
-      // ),
       backgroundColor: Colors.grey[300],
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,19 +40,6 @@ class _CompaniesPageState extends State<CompaniesPage> {
                 padding: const EdgeInsets.only(left: 25.0),
                 child: Container(
                   height: 50,
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.white),
-                    borderRadius: BorderRadius.circular(12),
-                    color: Colors.grey[200],
-                  ),
-                  child: const Icon(Icons.arrow_back, size: 30.0),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(right: 25.0),
-                child: Container(
-                  height: 50,
                   width: 50,
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.white),
@@ -75,18 +47,42 @@ class _CompaniesPageState extends State<CompaniesPage> {
                     color: Colors.grey[200],
                   ),
                   child: TextButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Navigation(currentIndex: 1)));
+                    },
+                    child: const Icon(
+                      Icons.arrow_back,
+                      size: 30.0,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ),
+              Visibility(
+                visible: _admin == _user,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 25.0),
+                  child: Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white),
+                      borderRadius: BorderRadius.circular(12),
+                      color: Colors.grey[200],
+                    ),
+                    child: TextButton(
                       onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => const AddCompany(),
-                          ),
-                        );
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const AddCompany()));
                       },
                       child: const Icon(
                         Icons.add_business,
                         size: 30.0,
                         color: Colors.black,
-                      )),
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -127,6 +123,8 @@ class _CompaniesPageState extends State<CompaniesPage> {
                       ),
                       contentPadding: const EdgeInsets.fromLTRB(15, 6, 8, 6),
                       leading: Container(
+                        height: 60,
+                        width: 60,
                         decoration: BoxDecoration(
                           color: Colors.grey[300],
                           border: Border.all(color: Colors.black),
@@ -179,7 +177,10 @@ class _CompaniesPageState extends State<CompaniesPage> {
                   tilesList.add(companyTile);
                 });
               } else {
-                return const CircularProgressIndicator();
+                return const SizedBox(
+                    height: 500,
+                    width: 1000,
+                    child: Center(child: CircularProgressIndicator()));
               }
               return Expanded(
                 child: ListView(
