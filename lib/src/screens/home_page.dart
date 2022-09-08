@@ -1,4 +1,8 @@
+// ignore_for_file: sized_box_for_whitespace
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:solarhelp/src/screens/signin_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -7,28 +11,15 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  @override
- Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Stromkostenrechner',
-      home: MyCustomForm(),
-    );
-  }
-}
-class MyCustomForm extends StatefulWidget {
-  const MyCustomForm({super.key});
-
-  @override
-  State<MyCustomForm> createState() => _MyCustomFormState();
-}
 // Define a corresponding State class.
 // This class holds the data related to the Form.
-class _MyCustomFormState extends State<MyCustomForm> {
+class _HomePageState extends State<HomePage> {
+  final auth = FirebaseAuth.instance;
   // Create a text controller and use it to retrieve the current value
   // of the TextField.
   final myInputArea = TextEditingController();
   final myInputCost = TextEditingController();
+  late int selected = 1;
 
   @override
   void dispose() {
@@ -41,78 +32,263 @@ class _MyCustomFormState extends State<MyCustomForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Retrieve Text Input'),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(
-            height: 75,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: TextField(
-              decoration: const InputDecoration(
-                  hintText: 'm^2',
-                  hintStyle: TextStyle(color: Colors.blue),
-                  labelText: "Gib deine Solapanelfläche in m^2 ein"),
-              controller: myInputArea,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: TextField(
-              decoration: const InputDecoration(
-                  hintText: 'Ct/KwH',
-                  hintStyle: TextStyle(color: Colors.blue),
-                  labelText: "Gib deine Kosten in Cent/kwH ein"),
-              controller: myInputCost,
-            ),
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        // When the user presses the button, show an alert dialog containing
-        // the text that the user has entered into the text field.
+      backgroundColor: Colors.grey[300],
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 75),
+            Padding(
+              padding: const EdgeInsets.only(left: 25.0),
+              child: Container(
+                height: 50,
+                width: 50,
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.white),
+                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.grey[200],
+                ),
+                child: TextButton(
+                  onPressed: () {
+                    auth.signOut();
 
-        onPressed: () {
-          final double result1 =
-              calcSolar(myInputArea.text, myInputCost.text)[0];
-          final double resultCostYear =
-              calcSolar(myInputArea.text, myInputCost.text)[1];
-          final double resultPowerYear =
-              calcSolar(myInputArea.text, myInputCost.text)[2];
-          final double resultPowerDay =
-              calcSolar(myInputArea.text, myInputCost.text)[3];
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const Signin()));
+                  },
+                  child: const Icon(
+                    Icons.logout_rounded,
+                    size: 30.0,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 10),
+            const Padding(
+              padding: EdgeInsets.only(left: 25.0),
+              child: Text(
+                'Calculate your savings',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
+              ),
+            ),
+            const SizedBox(height: 30),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(30, 10, 40, 0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Enter the area of your Roof',
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+                  ),
+                  const SizedBox(height: 15),
+                  Container(
+                    height: 60,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      border: Border.all(color: Colors.black),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: TextField(
+                      decoration: const InputDecoration(
+                          border:
+                              OutlineInputBorder(borderSide: BorderSide.none),
+                          hintText: "Area in m2"),
+                      controller: myInputArea,
+                    ),
+                  ),
+                  const SizedBox(height: 30),
+                  const Text(
+                    'Enter your power cost in cent/kwH',
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+                  ),
+                  const SizedBox(height: 15),
+                  Container(
+                    height: 60,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      border: Border.all(color: Colors.black),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: TextField(
+                      decoration: const InputDecoration(
+                          border:
+                              OutlineInputBorder(borderSide: BorderSide.none),
+                          hintText: "Cent/kwH"),
+                      controller: myInputCost,
+                    ),
+                  ),
+                  const SizedBox(height: 30),
+                  const Text(
+                    'Select no. of years',
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+                  ),
+                  const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      duration(1),
+                      duration(2),
+                      duration(3),
+                      duration(4),
+                      duration(5),
+                      duration(10),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      duration(15),
+                      duration(20),
+                      duration(25),
+                      duration(30),
+                      duration(35),
+                      duration(40),
+                    ],
+                  ),
+                  const SizedBox(height: 40),
+                  GestureDetector(
+                    onTap: () {
+                      final double result1 = calcSolar(
+                          myInputArea.text, myInputCost.text, selected)[0];
+                      final double resultCostYear = calcSolar(
+                          myInputArea.text, myInputCost.text, selected)[1];
+                      final double resultPowerYear = calcSolar(
+                          myInputArea.text, myInputCost.text, selected)[2];
+                      final double resultPowerDay = calcSolar(
+                          myInputArea.text, myInputCost.text, selected)[3];
 
-          showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                  // Retrieve the text the that user has entered by using the
-                  // TextEditingController.
-                  // title: Text(result1.toString()),
-                  content: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                //position
-                mainAxisSize: MainAxisSize.min,
-                // wrap content in flutter
-                children: <Widget>[
-                  Text("Kostenersparnis von $result1€ im Jahr"),
-                  Text(
-                      "Durchschnitts Stromkosten im Jahr mit Solarpanel (bei 3500Kw) $resultCostYear€"),
-                  Text(
-                      "Durchschnittlich Generierter Strom am Tag $resultPowerDay KwH"),
-                  Text(
-                      "Durchschnittlich Generierter Strom im Jahr: $resultPowerYear KwH"),
+                      showModalBottomSheet(
+                          isDismissible: true,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          context: context,
+                          builder: (BuildContext context) {
+                            return Container(
+                              height: 400,
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.fromLTRB(20, 30, 0, 0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const Text(
+                                      "Results",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 20),
+                                    ),
+                                    const SizedBox(height: 15),
+                                    result(
+                                      result1,
+                                      'Savings in $selected years',
+                                      '€',
+                                    ),
+                                    result(
+                                        resultCostYear,
+                                        "Average cost of electricity(3500Kwh)",
+                                        '€'),
+                                    result(
+                                        resultPowerDay,
+                                        "Average engery produced in a day ",
+                                        'Kwh'),
+                                    result(
+                                        resultPowerYear,
+                                        'Average engery produced in a year ',
+                                        'Kwh'),
+                                    const SizedBox(height: 20),
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.of(context).pop();
+                                        myInputArea.clear();
+                                        myInputCost.clear();
+                                      },
+                                      child: Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 20.0),
+                                        child: Container(
+                                          height: 60,
+                                          width: double.infinity,
+                                          decoration: BoxDecoration(
+                                            color: Colors.grey[600],
+                                            borderRadius:
+                                                BorderRadius.circular(25),
+                                          ),
+                                          child: const Center(
+                                            child: Text(
+                                              "Recalculate",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 20),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          });
+                    },
+                    child: Container(
+                      height: 60,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[600],
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          "Calculate",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500, fontSize: 20),
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
-              ));
-            },
-          );
-        },
-        tooltip: 'Show me the value!',
-        child: const Icon(Icons.text_fields),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget result(
+    double result1,
+    String title,
+    String unit,
+  ) {
+    return ListTile(
+      title: Text(title),
+      trailing: Text('${result1.toStringAsFixed(2) + unit} '),
+    );
+  }
+
+  Widget duration(int title) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selected = title;
+        });
+      },
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(8, 5, 8, 0),
+        child: Container(
+          height: 40,
+          width: 40,
+          decoration: BoxDecoration(
+            border: title == selected
+                ? Border.all(color: Colors.black, width: 2)
+                : null,
+            color: Colors.grey[500],
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Center(child: Text(title.toString())),
+        ),
       ),
     );
   }
@@ -120,17 +296,17 @@ class _MyCustomFormState extends State<MyCustomForm> {
 
 // 32,81 cent bei cent/kWh
 // per squaremeter 1360 watts
-calcSolar(myInputArea, myInputCost) {
+calcSolar(myInputArea, myInputCost, selected) {
   myInputArea = double.parse(myInputArea);
   myInputCost = double.parse(myInputCost);
 
-  var resultPower = myInputArea * 1.360;
-  var result = ((1642.5 * resultPower) / 1000) * myInputCost;
-  var resultPowerYear = (1642.5 * resultPower);
-  var resultPowerDay = (4.5 * resultPower);
+  var resultPower = myInputArea * 25;
+  // var result = ((1642.5 * resultPower) / 1000) * myInputCost * selected;
+  var result = resultPower * (myInputCost / 100) * selected;
+  var resultPowerYear = (resultPower);
+  var resultPowerDay = (resultPower / 365);
   // 1642.5 durschnitts an Sonnenstunden im Jahr in Deutschland
-  var resultCostYear =
-      ((myInputCost * 34) - ((1642.5 * resultPower) / 1000) * myInputCost);
+  var resultCostYear = (3500 * (myInputCost / 100)) - result;
 
   return [result, resultCostYear, resultPowerYear, resultPowerDay];
 }
