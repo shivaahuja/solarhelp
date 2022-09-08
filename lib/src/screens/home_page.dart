@@ -306,7 +306,7 @@ calcSolar(myInputArea, myInputCost, selected) {
   var resultPowerYear = (resultPower);
   var resultPowerDay = (resultPower / 365);
   // 1642.5 durschnitts an Sonnenstunden im Jahr in Deutschland
-  var resultCostYear = (3500 * (myInputCost / 100)) - result;
+  var resultCostYear = ((3500 * selected * (myInputCost / 100)) - result);
 
   return [result, resultCostYear, resultPowerYear, resultPowerDay];
 }
