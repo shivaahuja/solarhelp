@@ -187,16 +187,16 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                     result(
                                         resultCostYear,
-                                        "Durchschnitts Stromkosten im Jahr mit Solarpanel (bei 3500Kw)",
+                                        "Average cost of electricity(3500Kwh)",
                                         '€'),
                                     result(
                                         resultPowerDay,
                                         "Average engery produced in a day ",
-                                        'Kw'),
+                                        'Kwh'),
                                     result(
                                         resultPowerYear,
                                         'Average engery produced in a year ',
-                                        'Kw'),
+                                        'Kwh'),
                                     const SizedBox(height: 20),
                                     GestureDetector(
                                       onTap: () {
@@ -300,13 +300,13 @@ calcSolar(myInputArea, myInputCost, selected) {
   myInputArea = double.parse(myInputArea);
   myInputCost = double.parse(myInputCost);
 
-  var resultPower = myInputArea * 1.360;
-  var result = ((1642.5 * resultPower) / 1000) * myInputCost * selected;
-  var resultPowerYear = (1642.5 * resultPower);
-  var resultPowerDay = (4.5 * resultPower);
+  var resultPower = myInputArea * 25;
+  // var result = ((1642.5 * resultPower) / 1000) * myInputCost * selected;
+  var result = resultPower * (myInputCost / 100) * selected;
+  var resultPowerYear = (resultPower);
+  var resultPowerDay = (resultPower / 365);
   // 1642.5 durschnitts an Sonnenstunden im Jahr in Deutschland
-  var resultCostYear =
-      ((myInputCost * 34) - ((1642.5 * resultPower) / 1000) * myInputCost);
+  var resultCostYear = (3500 * (myInputCost / 100)) - result;
 
   return [result, resultCostYear, resultPowerYear, resultPowerDay];
 }
