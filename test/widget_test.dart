@@ -7,7 +7,7 @@ class Calculator {
 }
 
 void main() {
-  test('Example Test ', () {
+  test('Example Test', () {
     Calculator calculator = Calculator();
 
     int result = calculator.add(5, 6);
