@@ -6,6 +6,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:solarhelp/src/screens/home_page.dart';
 import 'package:solarhelp/src/screens/navigation.dart';
 import 'package:solarhelp/src/screens/signup_page.dart';
+import 'package:solarhelp/src/screens/verifyscreen.dart';
 import '../auth.dart';
 
 class Signin extends StatefulWidget {
@@ -189,11 +190,7 @@ class _SigninState extends State<Signin> {
         );
       } else {
         Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => Navigation(
-              currentIndex: 0,
-            ),
-          ),
+          MaterialPageRoute(builder: (context) => const VerifyScreen()),
         );
       }
     } on FirebaseAuthException catch (e) {

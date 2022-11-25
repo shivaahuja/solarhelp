@@ -7,6 +7,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:solarhelp/src/screens/navigation.dart';
 import 'package:solarhelp/src/screens/signin_page.dart';
+import 'package:solarhelp/src/screens/verifyscreen.dart';
 
 class Signup extends StatefulWidget {
   const Signup({Key? key}) : super(key: key);
@@ -208,10 +209,8 @@ class _SignupState extends State<Signup> {
         await userCredential.user!.updateDisplayName(_name);
         // await userCredential.user!.sendEmailVerification();
 
-        Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (context) => Navigation(
-                  currentIndex: 1,
-                )));
+        Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => const VerifyScreen()));
       }
     } on FirebaseAuthException catch (e) {
       Fluttertoast.showToast(
