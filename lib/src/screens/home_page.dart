@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
     return ShowCaseWidget(
       builder: Builder(
           builder: (context) => Scaffold(
-                backgroundColor: Colors.grey[300],
+                backgroundColor: Colors.grey[200],
                 body: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,9 +46,10 @@ class _HomePageState extends State<HomePage> {
                               height: 50,
                               width: 50,
                               decoration: BoxDecoration(
-                                border: Border.all(color: Colors.white),
+                                border:
+                                    Border.all(color: const Color(0xFF367D38)),
                                 borderRadius: BorderRadius.circular(12),
-                                color: Colors.grey[200],
+                                color: Colors.green[500],
                               ),
                               child: TextButton(
                                 onPressed: () {
@@ -60,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                                 child: const Icon(
                                   Icons.logout_rounded,
                                   size: 30.0,
-                                  color: Colors.black,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
@@ -71,9 +72,10 @@ class _HomePageState extends State<HomePage> {
                               height: 50,
                               width: 50,
                               decoration: BoxDecoration(
-                                border: Border.all(color: Colors.white),
+                                border:
+                                    Border.all(color: const Color(0xFF367D38)),
                                 borderRadius: BorderRadius.circular(12),
-                                color: Colors.grey[200],
+                                color: Colors.green[500],
                               ),
                               child: TextButton(
                                 onPressed: () {
@@ -90,7 +92,7 @@ class _HomePageState extends State<HomePage> {
                                 child: const Icon(
                                   Icons.info,
                                   size: 30.0,
-                                  color: Colors.black,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
@@ -99,11 +101,13 @@ class _HomePageState extends State<HomePage> {
                       ),
                       const SizedBox(height: 10),
                       const Padding(
-                        padding: EdgeInsets.only(left: 25.0),
+                        padding: EdgeInsets.fromLTRB(35, 10, 20, 0),
                         child: Text(
                           'Calculate your savings',
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 26),
+                            fontWeight: FontWeight.w900,
+                            fontSize: 28,
+                          ),
                         ),
                       ),
                       const SizedBox(height: 30),
@@ -115,14 +119,15 @@ class _HomePageState extends State<HomePage> {
                             const Text(
                               'Enter the area of your Roof',
                               style: TextStyle(
-                                  fontWeight: FontWeight.w500, fontSize: 20),
+                                  fontWeight: FontWeight.w600, fontSize: 20),
                             ),
                             const SizedBox(height: 15),
                             Container(
                               height: 60,
                               decoration: BoxDecoration(
-                                color: Colors.grey[200],
-                                border: Border.all(color: Colors.black),
+                                color: Colors.green[200],
+                                border:
+                                    Border.all(color: const Color(0xFF367D38)),
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: Showcase(
@@ -139,16 +144,17 @@ class _HomePageState extends State<HomePage> {
                             ),
                             const SizedBox(height: 30),
                             const Text(
-                              'Enter your power cost in cent/kwH',
+                              'Enter your power cost',
                               style: TextStyle(
-                                  fontWeight: FontWeight.w500, fontSize: 20),
+                                  fontWeight: FontWeight.w600, fontSize: 20),
                             ),
                             const SizedBox(height: 15),
                             Container(
                               height: 60,
                               decoration: BoxDecoration(
-                                color: Colors.grey[200],
-                                border: Border.all(color: Colors.black),
+                                color: Colors.green[200],
+                                border:
+                                    Border.all(color: const Color(0xFF367D38)),
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: Showcase(
@@ -167,7 +173,7 @@ class _HomePageState extends State<HomePage> {
                             const Text(
                               'Select no. of years',
                               style: TextStyle(
-                                  fontWeight: FontWeight.w500, fontSize: 20),
+                                  fontWeight: FontWeight.w600, fontSize: 20),
                             ),
                             const SizedBox(height: 20),
                             Showcase(
@@ -278,7 +284,7 @@ class _HomePageState extends State<HomePage> {
                                                     height: 60,
                                                     width: double.infinity,
                                                     decoration: BoxDecoration(
-                                                      color: Colors.grey[600],
+                                                      color: Colors.green[600],
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               25),
@@ -288,8 +294,10 @@ class _HomePageState extends State<HomePage> {
                                                         "Recalculate",
                                                         style: TextStyle(
                                                             fontWeight:
-                                                                FontWeight.w500,
-                                                            fontSize: 20),
+                                                                FontWeight.w600,
+                                                            fontSize: 20,
+                                                            color:
+                                                                Colors.white),
                                                       ),
                                                     ),
                                                   ),
@@ -308,15 +316,16 @@ class _HomePageState extends State<HomePage> {
                                   height: 60,
                                   width: double.infinity,
                                   decoration: BoxDecoration(
-                                    color: Colors.grey[600],
+                                    color: Colors.green,
                                     borderRadius: BorderRadius.circular(25),
                                   ),
                                   child: const Center(
                                     child: Text(
                                       "Calculate",
                                       style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 20),
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 20,
+                                          color: Colors.white),
                                     ),
                                   ),
                                 ),
@@ -357,9 +366,9 @@ class _HomePageState extends State<HomePage> {
           width: 40,
           decoration: BoxDecoration(
             border: title == selected
-                ? Border.all(color: Colors.black, width: 2)
+                ? Border.all(color: const Color(0xFF367D38), width: 2)
                 : null,
-            color: Colors.grey[500],
+            color: Colors.green[500],
             borderRadius: BorderRadius.circular(10),
           ),
           child: Center(child: Text(title.toString())),

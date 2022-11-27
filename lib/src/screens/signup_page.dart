@@ -41,7 +41,10 @@ class _SignupState extends State<Signup> {
             padding: EdgeInsets.only(left: 25.0),
             child: Text(
               'Sign up',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 26,
+                  color: Color(0xFF367D38)),
             ),
           ),
           // const SizedBox(height: 10.0),

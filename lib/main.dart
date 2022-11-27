@@ -3,6 +3,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:solarhelp/src/screens/signin_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,8 +12,8 @@ void main() async {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.grey,
-        backgroundColor: Colors.blue[200],
+        primarySwatch: Colors.green,
+        textTheme: GoogleFonts.montserratTextTheme(),
       ),
       home: const Signin(),
     ),

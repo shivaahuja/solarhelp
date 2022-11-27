@@ -23,7 +23,7 @@ class ExternalCampaign extends StatelessWidget {
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
           color: Colors.grey[200],
-          border: Border.all(color: Colors.white),
+          border: Border.all(color: const Color(0xFF367D38)),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Row(
@@ -36,9 +36,12 @@ class ExternalCampaign extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: const Color(0xFF367D38)),
+                    ),
                     height: 55,
                     padding: const EdgeInsets.all(1),
-                    color: Colors.grey[300],
                     child: Image.asset(logoImagePath),
                   ),
                 ),
@@ -70,12 +73,12 @@ class ExternalCampaign extends StatelessWidget {
               uri: Uri.parse(websiteLink),
               builder: (BuildContext context, followLink) => ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.grey[700],
+                  backgroundColor: Colors.green[500],
                 ),
                 onPressed: followLink,
                 child: const Icon(
                   Icons.open_in_new,
-                  color: Colors.white70,
+                  color: Colors.white,
                 ),
               ),
             )

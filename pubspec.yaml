@@ -46,6 +46,7 @@ dependencies:
   file_picker: ^5.0.1
   circular_progress_bar: ^0.0.4
   showcaseview: ^2.0.0+1
+  google_fonts: ^3.0.1
 
 dev_dependencies:
   flutter_test:

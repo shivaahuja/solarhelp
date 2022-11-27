@@ -13,7 +13,7 @@ class DonationPage extends StatefulWidget {
 class _DonationPageState extends State<DonationPage> {
   final List externalCampaign = [
     [
-      'Environmental Defense Fund',
+      'Defense Fund',
       'lib/src/images/EDF.png',
       'https://www.edf.org/donate/?addl_info=nav-button|top_nav_donate_btn-test&ut_sid=29cfd1c2-aa74-48dc-85a0-86451831a86b&ut_pid=c01aebd2-74eb-414c-88cf-a6d574f99b63&conversion_pg=www.edf.org%2F&landing_pg=www.edf.org%2F&landing_pg_1st_visit=www.edf.org%2F&source_1st_visit=guides.lib.berkeley.edu&subsource_1st_visit=%2F&custom_source=guides.lib.berkeley.edu&custom_sub_source=%2F&custom_transfer=1661944759616',
       'Environment'
@@ -45,9 +45,9 @@ class _DonationPageState extends State<DonationPage> {
               height: 50,
               width: 50,
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.white),
+                border: Border.all(color: const Color(0xFF367D38)),
                 borderRadius: BorderRadius.circular(12),
-                color: Colors.grey[200],
+                color: Colors.green[400],
               ),
               child: TextButton(
                 onPressed: () {
@@ -57,7 +57,7 @@ class _DonationPageState extends State<DonationPage> {
                 child: const Icon(
                   Icons.arrow_back,
                   size: 30.0,
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
               ),
             ),
@@ -67,7 +67,7 @@ class _DonationPageState extends State<DonationPage> {
             padding: EdgeInsets.only(left: 25.0),
             child: Text(
               'Donate For A Greener Earth',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
+              style: TextStyle(fontWeight: FontWeight.w900, fontSize: 24),
             ),
           ),
           const SizedBox(height: 30),

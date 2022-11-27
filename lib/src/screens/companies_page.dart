@@ -42,9 +42,9 @@ class _CompaniesPageState extends State<CompaniesPage> {
                   height: 50,
                   width: 50,
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.white),
+                    border: Border.all(color: const Color(0xFF367D38)),
                     borderRadius: BorderRadius.circular(12),
-                    color: Colors.grey[200],
+                    color: Colors.green[500],
                   ),
                   child: TextButton(
                     onPressed: () {
@@ -54,7 +54,7 @@ class _CompaniesPageState extends State<CompaniesPage> {
                     child: const Icon(
                       Icons.arrow_back,
                       size: 30.0,
-                      color: Colors.black,
+                      color: Colors.white,
                     ),
                   ),
                 ),
@@ -67,9 +67,9 @@ class _CompaniesPageState extends State<CompaniesPage> {
                     height: 50,
                     width: 50,
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
+                      border: Border.all(color: const Color(0xFF367D38)),
                       borderRadius: BorderRadius.circular(12),
-                      color: Colors.grey[200],
+                      color: Colors.green[500],
                     ),
                     child: TextButton(
                       onPressed: () {
@@ -93,8 +93,8 @@ class _CompaniesPageState extends State<CompaniesPage> {
             child: Text(
               'Our Choices For Solar Power',
               style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 26,
+                fontSize: 24,
+                fontWeight: FontWeight.w900,
               ),
             ),
           ),
@@ -113,12 +113,12 @@ class _CompaniesPageState extends State<CompaniesPage> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0),
                     ),
-                    color: Colors.grey[300],
+                    color: Colors.green[300],
                     child: ListTile(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0),
                         side: BorderSide(
-                          color: Colors.grey.shade700,
+                          color: Colors.green.shade700,
                         ),
                       ),
                       contentPadding: const EdgeInsets.fromLTRB(15, 6, 8, 6),
@@ -126,8 +126,8 @@ class _CompaniesPageState extends State<CompaniesPage> {
                         height: 60,
                         width: 60,
                         decoration: BoxDecoration(
-                          color: Colors.grey[300],
-                          border: Border.all(color: Colors.black),
+                          color: Colors.grey[200],
+                          border: Border.all(color: const Color(0xFF367D38)),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         padding: const EdgeInsets.all(5.0),

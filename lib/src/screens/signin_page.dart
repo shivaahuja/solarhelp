@@ -39,7 +39,11 @@ class _SigninState extends State<Signin> {
               padding: EdgeInsets.only(left: 25.0),
               child: Text(
                 'Sign In',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 26,
+                  color: Color(0xFF2D8565),
+                ),
               ),
             ),
             const Padding(

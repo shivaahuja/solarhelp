@@ -46,8 +46,8 @@ class _NavigationState extends State<Navigation> {
   //BottomNavigationBar
   CurvedNavigationBar _buildBottomNavigationBar() {
     return CurvedNavigationBar(
-      backgroundColor: Colors.grey.shade300,
-      color: Colors.grey.shade100,
+      backgroundColor: Colors.grey.shade200,
+      color: Colors.green.shade300,
       index: _currentIndex,
       animationDuration: const Duration(milliseconds: 200),
       onTap: _onTapped,
