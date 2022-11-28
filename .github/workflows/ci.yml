@@ -3,6 +3,11 @@ on:
   pull_request:
     branches:
       - master
+  push:
+    branches:    
+      - '**'        # matches every branch
+
+
 
 jobs:
   flutter_test:
