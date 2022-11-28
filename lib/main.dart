@@ -2,7 +2,6 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:solarhelp/src/screens/navigation.dart';
 import 'package:solarhelp/src/screens/signin_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -16,9 +15,7 @@ void main() async {
         primarySwatch: Colors.green,
         textTheme: GoogleFonts.montserratTextTheme(),
       ),
-      home: Navigation(
-        currentIndex: 0,
-      ),
+      home: const Signin(),
     ),
   );
 }

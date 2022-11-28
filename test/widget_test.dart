@@ -23,20 +23,20 @@ void main() {
     final double result = calcSolar('100', '32', 10)[0];
     expect(result, 8000);
   });
-  test('average cost of electricity(3500kwH)', () {
+  test('Total Cost of Solar Panels', () {
     final double result = calcSolar('100', '32', 1)[1];
-    expect(result, 320);
+    expect(result, 10000);
   });
 
-  test('average energy produced in a day', () {
-    final double result = calcSolar('100', '32', 1)[3];
-    final resultInDec = result.toStringAsFixed(2);
-    expect(resultInDec, '6.85');
-  });
-
-  test('average energy produced in a year', () {
+  test('Break even point', () {
     final double result = calcSolar('100', '32', 1)[2];
     final resultInDec = result.toStringAsFixed(2);
-    expect(resultInDec, '2500.00');
+    expect(resultInDec, '12.50');
+  });
+
+  test('Net profit after 40 years', () {
+    final double result = calcSolar('100', '32', 40)[3];
+    final resultInDec = result.toStringAsFixed(2);
+    expect(resultInDec, '22000.00');
   });
 }
