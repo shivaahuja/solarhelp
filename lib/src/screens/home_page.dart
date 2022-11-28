@@ -216,15 +216,15 @@ class _HomePageState extends State<HomePage> {
                                     myInputArea.text,
                                     myInputCost.text,
                                     selected)[0];
-                                final double resultCostYear = calcSolar(
+                                final double resultTotalCost = calcSolar(
                                     myInputArea.text,
                                     myInputCost.text,
                                     selected)[1];
-                                final double resultPowerYear = calcSolar(
+                                final double resultBreakEven = calcSolar(
                                     myInputArea.text,
                                     myInputCost.text,
                                     selected)[2];
-                                final double resultPowerDay = calcSolar(
+                                final double resultNetProfit = calcSolar(
                                     myInputArea.text,
                                     myInputCost.text,
                                     selected)[3];
@@ -258,17 +258,17 @@ class _HomePageState extends State<HomePage> {
                                                 '€',
                                               ),
                                               result(
-                                                  resultCostYear,
-                                                  "Average cost of electricity(3500Kwh)",
+                                                  resultTotalCost,
+                                                  "Total Cost of Solar Panels ",
                                                   '€'),
                                               result(
-                                                  resultPowerDay,
-                                                  "Average engery produced in a day ",
-                                                  'Kwh'),
+                                                  resultBreakEven,
+                                                  "Break even point  ",
+                                                  'years'),
                                               result(
-                                                  resultPowerYear,
-                                                  'Average engery produced in a year ',
-                                                  'Kwh'),
+                                                  resultNetProfit,
+                                                  'Net profit after $selected years  ',
+                                                  '€'),
                                               const SizedBox(height: 20),
                                               GestureDetector(
                                                 onTap: () {
@@ -395,10 +395,14 @@ calcSolar(myInputArea, myInputCost, selected) {
   var resultPower = myInputArea * 25;
   // var result = ((1642.5 * resultPower) / 1000) * myInputCost * selected;
   var result = resultPower * (myInputCost / 100) * selected;
-  var resultPowerYear = (resultPower);
-  var resultPowerDay = (resultPower / 365);
+  //var resultPowerYear = (resultPower);
+  //var resultPowerDay = (resultPower / 365);
   // 1642.5 durschnitts an Sonnenstunden im Jahr in Deutschland
-  var resultCostYear = ((3500 * selected * (myInputCost / 100)) - result);
+  //var resultCostYear = ((3500 * selected * (myInputCost / 100)) - result);
 
-  return [result, resultCostYear, resultPowerYear, resultPowerDay];
+  var totalCost = 6000 + (myInputArea * 40);
+  var breakEvenPoint = (totalCost / result) * selected;
+  var netsaving = result - totalCost;
+
+  return [result, totalCost, breakEvenPoint, netsaving];
 }
