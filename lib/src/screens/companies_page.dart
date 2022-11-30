@@ -19,7 +19,7 @@ class CompaniesPage extends StatefulWidget {
 class _CompaniesPageState extends State<CompaniesPage> {
   final _database = FirebaseDatabase.instance.ref();
   final _user = FirebaseAuth.instance.currentUser!.uid;
-  final String _admin = 'WVewNHbl3rZZeXi7QyL2rJ3eCgC3';
+  final String _admin = 'tcc23GGm0nXmDJtJ3Y36iMZVqLf2';
   @override
   void initState() {
     super.initState();
